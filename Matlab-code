@@ -1,2 +1,0 @@
-Normal Equation:    (more efficient than Gradient Descent if the number of features is n<10,000)
-θ=pinv(X'X)X'y

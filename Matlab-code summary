@@ -1,0 +1,17 @@
+Week 2:
+Linear regression
+
+Hypothesis function:
+h(X, theta) = X * theta
+
+Cost function:
+J(theta) = J = ((h-y)'*(h-y))/(2*m)
+
+Normal Equation:    (more efficient than Gradient Descent if the number of features is n<10,000)
+θ=pinv(X'X)X'y
+
+Week 3:
+Logistic regression (sigmoid function)
+
+Hypothesis function:
+h(X, theta) = 1 / ( 1 + e^(-theta' * X)  )
