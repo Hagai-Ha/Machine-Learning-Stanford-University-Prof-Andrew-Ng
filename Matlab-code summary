@@ -45,6 +45,14 @@ theta = theta -(alpha/m)*X'*(h-y)
 
 # Multiclass classification: One-Vs-All
 
+
 # Underfitting = high bias
 # Overfitting = high variance (for example due to using a too high polynomial order while choosing the features)
 # Both do not generalize well, and fail to predict "new" data.
+
+# Addressing overfitting:
+# 1. Reduce the number of features:
+#       - manually or automatically choosing and keeping the most important features.
+# 2. Regularization:
+#       - reducing the magnitude of the values of theta. This method is favorable if there are a lot of features, and each of them contributes equally important to the prediction.
+
