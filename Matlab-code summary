@@ -16,7 +16,7 @@ Normal Equation:    (more efficient than Gradient Descent if the number of featu
 Week 3:
 Logistic regression (sigmoid function)
 
-Hypothesis function:
+Logistic Regression Hypothesis function:
 h(X, theta) = 1 / ( 1 + e^(-theta' * X)  )
 
 Decision boundary:
@@ -24,8 +24,21 @@ theta' * X = 0
 y = 1 if theta' * X >= 0
 y = 0 if theta' * X < 0
 
-Cost function:
+Logistic Regression Cost function:
 J = (1/m) * sum(Cost(h,y))
 if y = 1 --> Cost = -log(h)
 if y = 0 --> Cost = -log(1-h)
+    |
+    |
+    V
+Cost = -y*log(h) -(1-y)log(1-h)
+J = (1/m) * ( -y'*log(h) -(1-y)'*log(1-h) )
 
+Gradient Descent:
+theta = theta -(alpha/m)*X'*(h-y)
+
+# Examples of more advanced and a lot more complexed algorithms which could be used instead of Gradient Descent:
+# "Conjugate gradient"
+# "BFGS"
+# "L-BFGS"
+# All the said algorithms choose the learning rate "alpha" automatically, and often compute theta faster. They are usually learned in courses of advanced numerical computing methods. They could be implemented easily using certain libraries (Tip: try out different libraries, since some have better implementations than others...)
