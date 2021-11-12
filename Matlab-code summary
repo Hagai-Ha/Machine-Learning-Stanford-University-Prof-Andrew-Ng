@@ -42,3 +42,6 @@ theta = theta -(alpha/m)*X'*(h-y)
 # "BFGS"
 # "L-BFGS"
 # All the said algorithms choose the learning rate "alpha" automatically, and often compute theta faster. They are usually learned in courses of advanced numerical computing methods. They could be implemented easily using certain libraries (Tip: try out different libraries, since some have better implementations than others...)
+
+# Multiclass classification: One-Vs-All
+
