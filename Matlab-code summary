@@ -1,4 +1,4 @@
-Week 2:
+################################   Week 2:   ################################
 Linear regression
 
 Hypothesis function:
@@ -13,7 +13,8 @@ theta = theta - (alpha/m) * X' * (h - y)
 Normal Equation:    (more efficient than Gradient Descent if the number of features is n<10,000)
 θ=pinv(X'X)X'y
 
-Week 3:
+################################   Week 3:   ################################
+
 Logistic regression (sigmoid function)
 
 Logistic Regression Hypothesis function:
@@ -56,3 +57,16 @@ theta = theta -(alpha/m)*X'*(h-y)
 # 2. Regularization:
 #       - reducing the magnitude of the values of theta. This method is favorable if there are a lot of features, and each of them contributes equally important to the prediction.
 
+# Regularization
+
+Regularized Linear Regression:
+
+Cost function:
+J(theta) = J = (1/(2*m))*( (h-y)'*(h-y) + lambda*sum(theta^2) )
+
+Gradient Descent:
+theta = theta*(1-(alpha*lambda)/m) - (alpha/m) * X' * (h - y)
+
+Normal Equation:    
+θ=pinv(X'X + lambda*L)X'y
+    where L = [] an (n+1 x n+1) Identity matrix, with the first element switched to 0. i.e. I[0,0] = 0
