@@ -46,6 +46,5 @@ theta = theta -(alpha/m)*X'*(h-y)
 # Multiclass classification: One-Vs-All
 
 # Underfitting = high bias
-# Overfitting = high variance
-
-
+# Overfitting = high variance (for example due to using a too high polynomial order while choosing the features)
+# Both do not generalize well, and fail to predict "new" data.
