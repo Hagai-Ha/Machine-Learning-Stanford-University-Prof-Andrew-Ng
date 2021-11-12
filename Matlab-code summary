@@ -65,7 +65,8 @@ Cost function:
 J(theta) = J = (1/(2*m))*( (h-y)'*(h-y) + lambda*sum(theta^2) )
 
 Gradient Descent:
-theta = theta*(1-(alpha*lambda)/m) - (alpha/m) * X' * (h - y)
+theta0 = theta0 -(alpha/m)*X0'*(h-y)
+theta = theta*(1-(alpha*lambda)/m) - (alpha/m) * X' * (h - y) # for theta 1...n (we don't regularize theta0)
 
 Normal Equation:    
 θ=pinv(X'X + lambda*L)X'y
