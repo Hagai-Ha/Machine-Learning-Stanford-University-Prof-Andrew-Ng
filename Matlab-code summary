@@ -45,3 +45,7 @@ theta = theta -(alpha/m)*X'*(h-y)
 
 # Multiclass classification: One-Vs-All
 
+# Underfitting = high bias
+# Overfitting = high variance
+
+
