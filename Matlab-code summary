@@ -71,3 +71,9 @@ theta = theta*(1-(alpha*lambda)/m) - (alpha/m) * X' * (h - y) # for theta 1...n 
 Normal Equation:    
 θ=pinv(X'X + lambda*L)X'y
     where L = [] an (n+1 x n+1) Identity matrix, with the first element switched to 0. i.e. I[0,0] = 0
+    Regularizing the Normal Equation also helps with the uninvertibility problem.
+    
+
+
+
+
