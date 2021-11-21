@@ -114,5 +114,13 @@ for c = 1:num_labels
     all_theta(c,:) = theta';
 end
 
+# This is a vectorized implementation that takes all_theta matrix calculated above, and creates the final prediction vector p (m x 1):
 
+% all_theta (k x n+1)
+% X (m x n+1)
+all_z = X * all_theta' ; % (m x k) =  (m x n+1) * (k x n+1)'
+all_h = 1./(1+exp(-all_z)) ; % (m x k)
+%    M = max(X,[],DIM) or [M,I] = max(X,[],DIM) operates along the dimension DIM.
+[MaxVal, MaxIndex] = max(all_h,[],2); % (m x 1) , (m x 1)
+p = MaxIndex; % (m x 1)
 
