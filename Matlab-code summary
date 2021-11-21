@@ -90,11 +90,29 @@ grad(2:length(grad)) = grad(2:length(grad)) + (lambda/m)*theta(2:length(grad)); 
 
 ################################   Week 4: Multi-class logistic regression classifiers & Neural Networks   ################################
 
+# Multi-class logistic regression classifiers:
+# Multi-class LR classifiers can be implemented using the "One Vs. All" method, in which each class (or label) in its turn, is being tested against all other options.
+
+# Insted of treating "y_i" as a binary scalar, it is treated as a a k-dimensional binary vector (where "k" is the number of classes/labels).
+# For example: y = [0;0;1;0] corresponds to a case in which a sample belongs to class #3, out of a total of 4 different classes.
+
 % MATLAB built-in optimization functions:
 %       fmincg works similarly to fminunc, but is more efficient when we
 %       are dealing with large number of parameters.
 
-
+% This is a for-loop implementation that matches a theta (n+1 dimensional vector) to each class/label. It is finally stored to creat all_theta (k x +1 dimensional matrix).
+for c = 1:num_labels
+    % Set Initial theta
+    initial_theta = zeros(n + 1, 1);
+    %     
+    % Set options for fminunc
+    options = optimset('GradObj', 'on', 'MaxIter', 50);
+    
+    % Run fmincg to obtain the optimal theta
+    % This function will return theta and the cost 
+    [theta] = fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), initial_theta, options); % (n+1 x 1)
+    all_theta(c,:) = theta';
+end
 
 
 
