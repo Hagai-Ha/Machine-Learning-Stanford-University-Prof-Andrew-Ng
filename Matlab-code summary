@@ -143,3 +143,24 @@ h_all = a3; % (m x num_labels)
 
 [MaxValue, MaxIndex] = max(h_all,[],2);
 p = MaxIndex; % (m x 1)
+
+################################   Week 5: Backpropagation, Neural Networks   ################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
