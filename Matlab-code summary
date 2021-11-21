@@ -88,10 +88,11 @@ delta(j) = gradient(j) = (1/m) * x(j) * (h-y) + (lambda/m)*theta(j)         # Fo
 grad = (1/m) * X'*(h-y); % (n+1 x 1)
 grad(2:length(grad)) = grad(2:length(grad)) + (lambda/m)*theta(2:length(grad)); % adding Reg to all theta except theta0 (theta(1))
 
-################################   Week 4:   ################################
+################################   Week 4: Multi-class logistic regression classifiers & Neural Networks   ################################
 
-
-
+% MATLAB built-in optimization functions:
+%       fmincg works similarly to fminunc, but is more efficient when we
+%       are dealing with large number of parameters.
 
 
 
