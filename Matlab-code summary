@@ -124,7 +124,7 @@ all_h = 1./(1+exp(-all_z)) ; % (m x k)
 [MaxVal, MaxIndex] = max(all_h,[],2); % (m x 1) , (m x 1)
 p = MaxIndex; % (m x 1)
 
-# Implementation of Neural Network with precalculated weights and 1 hidden layer:
+# Implementation of Neural Network Forward Propagation with precalculated weights and 1 hidden layer:
 % num_labels = 10
 % Theta1 has size 25 x 401 (25 x n+1)
 % Theta2 has size 10 x 26
@@ -157,7 +157,9 @@ s_l = number of units (not counting bias unit) in layer l
 K = number of output units/classes
 h_k = the hypothesis that results in the kth output.
 
-
+# Partial derivatives of the cost function J(Theta) = dJ/d(theta_ij^l)
+dJ/d(theta_ij^l)  =  D_ij^l 
+# Where D is a matrix of the deltas calculated through the process of backpropagation and corresponding to layer "l" (lower case "L")
 
 
 
