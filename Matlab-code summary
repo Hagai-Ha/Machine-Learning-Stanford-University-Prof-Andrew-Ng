@@ -160,6 +160,9 @@ h_k = the hypothesis that results in the kth output.
 # Backpropagation
 
 # Important: For each training example (x_i, y_i), Forward propagation and Backpropagation are done immediately one after the other, and only then Forward propagation is computed for the next training example (x_i+1, y_i+1)
+for i = 1:m,
+   Perform forward propagation and backpropagation using example (x(i),y(i))
+   (Get activations a(l) and delta terms d(l) for l = 2,...,L
 
 # Partial derivatives of the cost function J(Theta) = dJ/d(theta_ij^l)
 dJ/d(theta_ij^l)  =  D_ij^l 
@@ -211,12 +214,13 @@ Theta1 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 Theta2 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 
-# Neural network so far:
-# Choose architecture
+# Neural network so far: Putting it together
+# Choose architecture - usually 1 hidden layer with a number of units between 1~3 times the number of features. Possibly add a few more hidden layers with a similar number of units.
 # Initialize Thetas (break symmetry)
-# Forward propagation
-# Backpropagation
-# Gradient checking
+# Compute J(Theta)
+# Use a for-loop (or more advanced vectorization methods) to iterate over all training examples (x_i, y_i) where i = 1:m
+#   Forward propagation + Backpropagation (for each training example x_i,y_i)
+# Gradient checking (disabled once checked)
 # Minimize J(Theta) using algorithm descent or another more advanced optimization algorithm
 
 
