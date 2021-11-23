@@ -159,7 +159,7 @@ h_k = the hypothesis that results in the kth output.
 
 # Backpropagation
 
-# Important: For each training example (x_i, y_i), Forward propagation and Backpropagation are done immdiately one after the other, and only then Forward propagation is computed for the next training example (x_i+1, y_i+1)
+# Important: For each training example (x_i, y_i), Forward propagation and Backpropagation are done immediately one after the other, and only then Forward propagation is computed for the next training example (x_i+1, y_i+1)
 
 # Partial derivatives of the cost function J(Theta) = dJ/d(theta_ij^l)
 dJ/d(theta_ij^l)  =  D_ij^l 
