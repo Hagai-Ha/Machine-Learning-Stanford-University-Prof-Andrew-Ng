@@ -170,6 +170,18 @@ delta_j^(l) = d[cost(t)]/d(z_j^(l)) # partial derivative of the cost function wi
 
 delta_j^(l) = sum[ Theta_ij^(l) * delta_i^(l+1) ]  # for i in 1:s_(l+1)  # for l in 2:(L-1)  # for j in 1:s_l
 
+# Implementation note:
+# The matrix forms for Theta(l) and for D(l) (which represent the partial derivatives of J w.r.t. theta i.e. the gradient)
+# are a more comfortable for doing Forward propagation & Backpropagation (taking advantage of the effecient vectorization and matrix multiplication methods).
+# On the other hand, when using advanced optimization algorithms (such as "fminunc") it is better to "unroll" those matrices into long vectors, and reshape them later back into matrices.
+# This can be done in MATLAB as follows:
+# Unrolling:
+thetaVector = [ Theta1(:); Theta2(:); Theta3(:); ]
+deltaVector = [ D1(:); D2(:); D3(:) ]
+# Reshaping:
+Theta1 = reshape(thetaVector(1:110),10,11)
+Theta2 = reshape(thetaVector(111:220),10,11)
+Theta3 = reshape(thetaVector(221:231),1,11)
 
 
 
