@@ -177,7 +177,9 @@ delta_j^(l) = sum[ Theta_ij^(l) * delta_i^(l+1) ]  # for i in 1:s_(l+1)  # for l
 # This can be done in MATLAB as follows:
 # Unrolling:
 thetaVector = [ Theta1(:); Theta2(:); Theta3(:); ]
-deltaVector = [ D1(:); D2(:); D3(:) ]
+deltaVector = [ D1(:); D2(:); D3(:) ] # = gradientVec
+# Optimization function:
+function [jval, gradientVec] = costFunction(thetaVector)
 # Reshaping:
 Theta1 = reshape(thetaVector(1:110),10,11)
 Theta2 = reshape(thetaVector(111:220),10,11)
