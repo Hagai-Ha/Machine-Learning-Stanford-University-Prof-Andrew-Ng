@@ -157,11 +157,16 @@ s_l = number of units (not counting bias unit) in layer l
 K = number of output units/classes
 h_k = the hypothesis that results in the kth output.
 
+# Backpropagation
+
+# Important: For each training example (x_i, y_i), Forward propagation and Backpropagation are done immdiately one after the other, and only then Forward propagation is computed for the next training example (x_i+1, y_i+1)
+
 # Partial derivatives of the cost function J(Theta) = dJ/d(theta_ij^l)
 dJ/d(theta_ij^l)  =  D_ij^l 
 # Where D is a matrix of the deltas calculated through the process of backpropagation and corresponding to layer "l" (lower case "L")
 
-
+# delta could also be defined as such:
+delta_j^(l) = d[cost(t)]/d(z_j^(l)) # partial derivative of the cost function with respect to the t'th training example.
 
 
 
