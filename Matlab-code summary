@@ -199,7 +199,25 @@ for i = 1:n,
 end;
 # gradApprox ~=~ deltaVector # up to a few decimal points
 
+# Random initialization of Theta: Breaking the symmetry.
+# In logistic regression, the vector theta can be initialized to a zeros (n+1 , 1) vector.
+# In neural networks on the other, such approach of giving all the "weights" the same value (be it zero or a different real number), does not work.
+# Such approach would in turn creat the same values of a_i^(l) [for i in 1:s_l] ultimately turning all of the nodes into redundant copies of each other.
+# To avoid this, one can randomly initialize the Theta matrix with different and unique values (say between +epsilon and -epsilon).
+# MATLAB implementation:
+If the dimensions of Theta1 is 10x11, Theta2 is 10x11 and Theta3 is 1x11.
 
+Theta1 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
+Theta2 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
+Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
+
+# Neural network so far:
+# Choose architecture
+# Initialize Thetas (break symmetry)
+# Forward propagation
+# Backpropagation
+# Gradient checking
+# Minimize J(Theta) using algorithm descent or another more advanced optimization algorithm
 
 
 
