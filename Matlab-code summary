@@ -168,6 +168,7 @@ dJ/d(theta_ij^l)  =  D_ij^l
 # delta could also be defined as such:
 delta_j^(l) = d[cost(t)]/d(z_j^(l)) # partial derivative of the cost function with respect to the t'th training example.
 
+delta_j^(l) = sum[ Theta_ij^(l) * delta_i^(l+1) ]  # for i in 1:s_(l+1)  # for l in 2:(L-1)  # for j in 1:s_l
 
 
 
