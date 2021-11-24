@@ -226,18 +226,18 @@ Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 
 % Technical implementation note:
 % This is how one can transform the labels vector y from an m-dimensional vector of values (1,2,...,k) to a BINARY (m x k) dimensional matrix.
-% Method 1 - for loop:
+y = [1; 1; 2; 3; 4; 4];
 m = length(y);
-y_bin = zeros(m,num_labels);
+k = num_labels = max(y); % or max(y)+1 if there is a "0" label.
+y_bin = zeros(m,k);
+
+% Method 1 - for loop:
 for i = 1:m
     y_bin(i, y(i)) = 1;
 end
+
 % Method 2 - vectorized
-y1 = [1; 1; 2; 3; 4; 4];
-nRow1 = length(y1); % m = 6
-nCol1 = max(y1); % num_labels = 4 % since there is no label "0"
-A1 = zeros(nRow1,nCol1); % (m x k) = (6 x 4)
-index = (y1-1).*nRow1+(1:nRow1)'; % [0; 0; 1; 2; 3; 3] .* 6 + [1, 2, 3, 4, 5, 6] = [0; 0; 6; 12; 18; 18] + [1, 2, 3, 4, 5, 6] % (6 x 1) + (1 x 6) = (6 x 6)
+index = (y-1).*m+(1:m)'; % [0; 0; 1; 2; 3; 3] .* 6 + [1, 2, 3, 4, 5, 6] = [0; 0; 6; 12; 18; 18] + [1, 2, 3, 4, 5, 6] % (6 x 1) + (1 x 6) = (6 x 6)
 % index =
 %     1     2     3     4     5     6
 %     1     2     3     4     5     6
@@ -245,8 +245,9 @@ index = (y1-1).*nRow1+(1:nRow1)'; % [0; 0; 1; 2; 3; 3] .* 6 + [1, 2, 3, 4, 5, 6]
 %    13    14    15    16    17    18
 %    19    20    21    22    23    24
 %    19    20    21    22    23    24
-A1(index) = 1;
-A1
+y_bin(index) = 1;
+y_bin
+
 % Method 3 - sub2ind
 
 
