@@ -149,8 +149,11 @@ p = MaxIndex; % (m x 1)
 The cost function is a generalization of the LR cost function.
 
 Neural network Cost Function:
-J = -(1/m) * SUM(i=1->m){ SUM(k=1->K){ [ y_k^(i) * log(h_k) + (1 - y_k^(i) ) * log(1-h_k)] }} + (lambda/(2*m))* SUM(l=0->L-1){ SUM(i=1->s_l){ SUM(j=1->s_l+1){ [Theta_j,i^(l)]^2 }}}
+% In pure MATLAB:
+J = -(1/m)*sum(sum(y_bin .* log(h) + (1-y_bin) .* log(1-h) )) + (lambda/(2*m)) * ( sum(Theta1_reg, "all") + sum(Theta2_reg, "all") );
 
+# Mathematical representation:
+J = -(1/m) * SUM(i=1->m){ SUM(k=1->K){ [ y_k^(i) * log(h_k) + (1 - y_k^(i) ) * log(1-h_k)] }} + (lambda/(2*m))* SUM(l=0->L-1){ SUM(i=1->s_l){ SUM(j=1->s_l+1){ [Theta_j,i^(l)]^2 }}}
 Where:
 L = total number of layers in the network
 s_l = number of units (not counting bias unit) in layer l
