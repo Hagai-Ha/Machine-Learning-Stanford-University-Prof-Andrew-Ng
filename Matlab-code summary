@@ -151,6 +151,9 @@ The cost function is a generalization of the LR cost function.
 Neural network Cost Function:
 % In pure MATLAB:
 J = -(1/m)*sum(sum(y_bin .* log(h) + (1-y_bin) .* log(1-h) )) + (lambda/(2*m)) * ( sum(Theta1_reg, "all") + sum(Theta2_reg, "all") );
+% In the above formula:
+% y_bin is a binary (m x k) dimensional matrix.
+% h is a non-binary (m x k) dimensional matrix, and each value represent the probability / prediction rate for example i(1:m) to be labeled as j(1:k).
 
 # Mathematical representation:
 J = -(1/m) * SUM(i=1->m){ SUM(k=1->K){ [ y_k^(i) * log(h_k) + (1 - y_k^(i) ) * log(1-h_k)] }} + (lambda/(2*m))* SUM(l=0->L-1){ SUM(i=1->s_l){ SUM(j=1->s_l+1){ [Theta_j,i^(l)]^2 }}}
