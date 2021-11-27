@@ -267,6 +267,80 @@ y_bin(index) = 1; % Linear indexing
 
 
 
+# Example of a MATLAB function calculating the cost function J and the gradients, through the process of backpropagation:
+function [J grad] = nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lambda)
+% Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices
+% for our 2 layer neural network
+Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), hidden_layer_size, (input_layer_size + 1));
+Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), num_labels, (hidden_layer_size + 1));
+% Setup some useful variables
+m = size(X, 1);
+% Architecture:
+% Number of nodes in Input layer: n+1 = 401
+% Number of hidden layers: L-2 = 1
+% Number of nodes in hidden layer #1: size(Theta1,1) + 1 = hidden_layer_size + 1 = 26
+% Number of nodes in Output layer: num_labels = 10
+% Theta1 dimensions: (hidden_layer_size x n+1) = (25 x 401)
+% Theta2 dimensions: (num_labels x hidden_layer_size+1) = (10 x 26)
+% X_data should be an (m x n+1       ) dimensional matrix
+% Y_data should be an (m x num_labels) dimensional matrix
+n = size(X,2);
+X = [ones(m,1) X]; % adding 1's as intercept/bias column. (m x n+1)
+y_bin = zeros(m,num_labels); %size(y_bin) = 5000 x 10 = m x num_labels
+index_y = sub2ind(size(y_bin), 1:m, y'); % (1 x m)
+y_bin(index_y) = 1; % Linear indexing
+% Feedforward propagation:
+% from Input to hidden layer:
+z2 = X * Theta1'; % (m x hidden_layer_size) = (m x n+1) * (hidden_layer_size x n+1)'
+a2 = sigmoid(z2); % (m x hidden_layer_size)
+a2 = [ones(m,1) a2]; % (m x hidden_layer_size+1)
+% from hidden layer to Output layer:
+z3 = a2 * Theta2'; % (m x num_labels) = (m x hidden_layer_size+1) * (num_labels x hidden_layer_size+1)'
+% h = a3
+h = sigmoid(z3); % (m x num_labels)
+Theta1_reg = Theta1(:,2:end).^2;
+Theta2_reg = Theta2(:,2:end).^2;
+J = -(1/m)*sum(sum(y_bin .* log(h) + (1-y_bin) .* log(1-h) )) + (lambda/(2*m)) * ( sum(Theta1_reg, "all") + sum(Theta2_reg, "all") );
+D1 = 0;
+D2 = 0;
+for i = 1:m
+    % Feed forward propagation:
+    a1 = X(i,:); % (1 x n+1)
+    z2 = Theta1 * a1'; % (hidden_layer_size x n+1) * (1 x n+1)' = (hidden_layer_size x 1)
+    a2 = sigmoid(z2); % (hidden_layer_size x 1)
+    a2 = [1 ; a2]; % (hidden_layer_size + 1 x 1)
+    z3 = Theta2 * a2; % (num_labels x hidden_layer_size + 1) * (hidden_layer_size + 1 x 1) = (num_labels x 1)
+    h_i = sigmoid(z3); % (num_labels x 1)
+
+    % Backpropagation
+    delta_L = h_i - y_bin(i,:)'; % (num_labels x 1)
+    delta_l2 = Theta2' * delta_L .* sigmoidGradient([1; z2]); % (num_labels x hidden_layer_size + 1)' * (num_labels x 1) = (hidden_layer_size + 1 x 1)
+    delta_l2 = delta_l2(2:end); % discarding the delta of the bias unit. (hidden_layer_size x 1)
+    D2 = D2 + delta_L * a2'; % (1x1) + (num_labels x 1) * (hidden_layer_size + 1 x 1)' = (num_labels x hidden_layer_size + 1)
+    D1 = D1 + delta_l2 * a1; % (hidden_layer_size x 1) * (1 x n+1) = (hidden_layer_size x n+1)
+end
+Theta1_grad = D1./m; % (hidden_layer_size x n+1)
+Theta2_grad = D2./m; % (num_labels x hidden_layer_size + 1)
+reg1 = (lambda/m)* Theta1(:,2:end); % (hidden_layer_size x n+1-1)
+Theta1_grad(:,2:end) = Theta1_grad(:,2:end) + reg1;
+reg2 = (lambda/m)* Theta2(:,2:end); % (num_labels x hidden_layer_size+1-1)
+Theta2_grad(:,2:end) = Theta2_grad(:,2:end) + reg2;
+% Unroll gradients
+grad = [Theta1_grad(:) ; Theta2_grad(:)];
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
