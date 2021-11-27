@@ -332,6 +332,14 @@ end
 
 ################################   Week 6: Applied Machine Learning & System Design    ################################
 
+Strategies for debugging a learning algorithm:
+- More training examples
+- Smaller set of features (use less of them to avoid overfitting)
+- Getting additional features (to describe the data better)
+- Adding polynomial features (allowing for more complex decision boundaries etc.)
+- Decreasing/Increasing the learning rate alpha or the regularization parameter lambda.
+
+
 
 
 
