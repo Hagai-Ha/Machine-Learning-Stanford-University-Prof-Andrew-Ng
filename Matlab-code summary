@@ -339,8 +339,13 @@ Strategies for debugging a learning algorithm:
 - Adding polynomial features (allowing for more complex decision boundaries etc.)
 - Decreasing/Increasing the learning rate alpha or the regularization parameter lambda.
 
+# Test and Error:
+ We can split up the data into two sets: a training set and a test set.
+ Typically, the training set consists of 70 % of your data and the test set is the remaining 30 %. 
 
-
+The new procedure using these two sets is then:
+1. Learn Theta and minimize J_{train}(\Theta)J using the training set.
+2. Compute the test set error J_{test}(\Theta)J.
 
 
 
