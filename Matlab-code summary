@@ -347,6 +347,22 @@ The new procedure using these two sets is then:
 1. Learn Theta and minimize J_{train}(\Theta)J using the training set.
 2. Compute the test set error J_{test}(\Theta)J.
 
+# Model Selection:
+
+d = degree of polynomial [1=linear, 2=quad, etc.]
+How to choose the right degree?
+- Start by splitting the data to three groups: 60% train set; 20% (cross-)validation set; 20% test set.
+- Compute J_cv(Theta_d) for d=1:D
+- For the lowest J_cv, compute J_test(Theta_d) in order to see how the model generalizes.
+
+Similarly, the regularization parameter can also be chosen based on the cross-validation set.
+
+Plotting J_train and J_cv as a function of d or lambda, can help evaluate the best "fit":
+Both would be high in case of high bias (high lambda or small d)
+In case of high variance, J_train would be low, while J_cv would be high.
+Finally, the chosen values can be tested against the test set.
+
+
 
 
 
